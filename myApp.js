@@ -83,6 +83,11 @@ app.get('/now', (req, res, next) => {
 
 
 /** 9)  Get input from client - Route parameters */
+https://rocklobster7-introbasicnodeandexpress.glitch.me/word/echo
+app.get('/:word/echo', (req, res) => {
+  res.json({"echo": req.params.word});
+  console.log ("hi: " + req.params.word);
+});
 
 
 /** 10) Get input from client - Query parameters */
