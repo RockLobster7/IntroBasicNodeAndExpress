@@ -78,12 +78,12 @@ app.get('/now', (req, res, next) => {
   req.time = new Date().toString()
   next();
 }, (req, res, next) => {
-  res.json({time: req.time});
+  res.json({"time": req.time});
 });
 
 
 /** 9)  Get input from client - Route parameters */
-https://rocklobster7-introbasicnodeandexpress.glitch.me/word/echo
+//https://rocklobster7-introbasicnodeandexpress.glitch.me/word/echo
 app.get('/:word/echo', (req, res) => {
   res.json({"echo": req.params.word});
   console.log ("hi: " + req.params.word);
@@ -92,6 +92,12 @@ app.get('/:word/echo', (req, res) => {
 
 /** 10) Get input from client - Query parameters */
 // /name?first=<firstname>&last=<lastname>
+//https://rocklobster7-introbasicnodeandexpress.glitch.me/name?first=firstname&last=lastname
+app.route('/name').get ((req, res) => {
+  res.json({"name": req.query.first + " " + req.query.last});
+  console.log ("first:" +req.query.first + ',' + "last:" + req.query.last );
+}).post();
+// app.route(path).get(handler).post(handler)
 
   
 /** 11) Get ready for POST Requests - the `body-parser` */
