@@ -5,12 +5,15 @@
 
 
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 
 // --> 7)  Mount the Logger middleware here
 
 
 // --> 11)  Mount the body-parser middleware  here
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 /** 1) Meet the node console. */
@@ -96,7 +99,10 @@ app.get('/:word/echo', (req, res) => {
 app.route('/name').get ((req, res) => {
   res.json({"name": req.query.first + " " + req.query.last});
   console.log ("first:" +req.query.first + ',' + "last:" + req.query.last );
-}).post();
+}).post( (req, res) => {
+  res.json({"name": req.body.first + " " + req.body.last});
+  console.log ("first:" +req.body.first + ',' + "last:" + req.body.last );
+});
 // app.route(path).get(handler).post(handler)
 
   
